@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<title>SCHOOL TRIP.jpeg</title>
 <nav class="nav">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="TALENTED KIDS ACADEMY home">
@@ -49,12 +48,12 @@
 <section style="padding-top:20px;">
   <div class="wrap">
     <div class="band-tabs" role="tablist" aria-label="Grade bands">
-      <button class="band-tab" role="tab" aria-selected="true" data-target="panel-k">Kindergarten</button>
-      <button class="band-tab" role="tab" aria-selected="false" data-target="panel-lower">Grades 1&ndash;2</button>
-      <button class="band-tab" role="tab" aria-selected="false" data-target="panel-upper">Grades 3&ndash;5</button>
+      <button class="band-tab" id="tab-k" role="tab" aria-selected="true" aria-controls="panel-k" data-target="panel-k">Kindergarten</button>
+      <button class="band-tab" id="tab-lower" role="tab" aria-selected="false" aria-controls="panel-lower" data-target="panel-lower">Grades 1&ndash;2</button>
+      <button class="band-tab" id="tab-upper" role="tab" aria-selected="false" aria-controls="panel-upper" data-target="panel-upper">Grades 3&ndash;6</button>
     </div>
 
-    <div id="panel-k" class="band-panel active">
+    <div id="panel-k" class="band-panel active" role="tabpanel" aria-labelledby="tab-k">
       <p class="muted" style="max-width:60ch;">Kindergarten is play-first and language-rich. Children build early literacy and number sense through stories, songs, blocks, and guided discovery &mdash; with plenty of time outdoors.</p>
       <div class="subject-grid">
         <div class="subject-chip"><div class="tag">Literacy</div><h4>Letters &amp; Sounds</h4><p>Phonics through song, story time, and mark-making.</p></div>
@@ -64,7 +63,7 @@
       </div>
     </div>
 
-    <div id="panel-lower" class="band-panel">
+    <div id="panel-lower" class="band-panel" role="tabpanel" aria-labelledby="tab-lower" hidden>
       <p class="muted" style="max-width:60ch;">Grades 1&ndash;2 introduce structured literacy and math blocks, while keeping mornings hands-on and afternoons open for art, music, and outdoor learning.</p>
       <div class="subject-grid">
         <div class="subject-chip"><div class="tag">Literacy</div><h4>Reading &amp; Writing</h4><p>Guided reading groups and daily independent writing.</p></div>
@@ -75,14 +74,15 @@
       </div>
     </div>
 
-    <div id="panel-upper" class="band-panel">
-      <p class="muted" style="max-width:60ch;">Grades 3&ndash;5 build toward middle school readiness: longer projects, more independent research, and an introduction to a second language.</p>
+    <div id="panel-upper" class="band-panel" role="tabpanel" aria-labelledby="tab-upper" hidden>
+      <p class="muted" style="max-width:60ch;">Grades 3&ndash;6 build toward middle school readiness: longer projects, more independent research, and an introduction to a second language.</p>
       <div class="subject-grid">
         <div class="subject-chip"><div class="tag">Literacy</div><h4>Reading &amp; Composition</h4><p>Novel studies, essay structure, and peer editing.</p></div>
         <div class="subject-chip"><div class="tag">Numeracy</div><h4>Fractions to Pre-Algebra</h4><p>Problem-solving blocks with weekly math challenges.</p></div>
         <div class="subject-chip"><div class="tag">Science</div><h4>Investigations</h4><p>Hypothesis-driven projects, culminating in a spring science fair.</p></div>
         <div class="subject-chip"><div class="tag">Language</div><h4>Intro Spanish</h4><p>Conversational Spanish, three sessions a week.</p></div>
         <div class="subject-chip"><div class="tag">Enrichment</div><h4>Art, Music &amp; ICT</h4><p>Rotating enrichment blocks plus a Grade 5 coding unit.</p></div>
+        <div class="subject-chip"><div class="tag">Leadership</div><h4>Grade 6 Projects</h4><p>Independent projects that build responsibility, research, and presentation skills.</p></div>
       </div>
     </div>
   </div>
@@ -94,9 +94,9 @@
     <h2 class="heading-flag">Sample daily schedule
       <svg viewBox="0 0 260 14" preserveAspectRatio="none"><path d="M2 8 Q35 2 70 8 T140 8 T210 8 T258 8"/></svg>
     </h2>
-    <table class="schedule">
+    <div class="schedule-wrap"><table class="schedule">
       <thead>
-        <tr><th>Time</th><th>Kindergarten</th><th>Grades 1&ndash;2</th><th>Grades 3&ndash;5</th></tr>
+        <tr><th>Time</th><th>Kindergarten</th><th>Grades 1&ndash;2</th><th>Grades 3&ndash;6</th></tr>
       </thead>
       <tbody>
         <tr><td>7:45 &ndash; 8:00</td><td>Arrival &amp; free play</td><td>Arrival &amp; morning meeting</td><td>Arrival &amp; morning meeting</td></tr>
@@ -108,7 +108,7 @@
         <tr><td>1:30 &ndash; 2:30</td><td>Art &amp; music</td><td>Enrichment rotation</td><td>Language / ICT</td></tr>
         <tr><td>2:30 &ndash; 3:00</td><td>Pack up &amp; dismissal</td><td>Reflection &amp; dismissal</td><td>Reflection &amp; dismissal</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 </section>
 

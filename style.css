@@ -1,6 +1,6 @@
 /* ============================================================
-   Maple Hill Primary School — shared styles
-   Palette: Ink Navy / Paper White / Navy Accent / Poppy Red
+   TALENTED KIDS ACADEMY shared styles
+   Palette: Ink Navy / Paper White / Leaf Green / Poppy Red / Sun Yellow
    Type: Baloo 2 (display) + Inter (body/utility)
    Signature: the "growth line" — a single rising hand-drawn stroke
    ============================================================ */
@@ -12,9 +12,9 @@
   --ink-soft:   #2f4066;
   --paper:      #fdfcf9;
   --paper-dim:  #f4f1ea;
-  --leaf:       #1c2b4a;
-  --leaf-dark:  #16223b;
-  --sunbeam:    #ffffff;
+  --leaf:       #27805e;
+  --leaf-dark:  #185941;
+  --sunbeam:    #f5c84c;
   --poppy:      #e8604c;
   --charcoal:   #26303d;
   --line:       #e4ded0;
@@ -22,7 +22,7 @@
   --display: 'Baloo 2', ui-rounded, system-ui, sans-serif;
   --body: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --radius: 14px;
+  --radius: 8px;
   --shadow: 0 10px 30px -12px rgba(28,43,74,0.18);
   --max: 1120px;
 }
@@ -216,7 +216,7 @@ section{ padding: 88px 0; }
 }
 .nav-links a:hover, .nav-links a[aria-current="page"]{
   background: rgba(255,255,255,0.16);
-  color: var(--ink);
+  color: #fff;
 }
 .nav-avatars{
   display: flex;
@@ -375,7 +375,9 @@ section{ padding: 88px 0; }
   padding: 30px 26px;
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
+.card:hover{ transform: translateY(-5px); border-color: var(--sunbeam); box-shadow: 0 16px 34px -16px rgba(28,43,74,.32); }
 .card .icon{
   width:48px; height:48px;
   border-radius: 12px;
@@ -551,7 +553,10 @@ section{ padding: 88px 0; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px;
+  border-top: 4px solid var(--sunbeam);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+.subject-chip:hover{ transform: translateY(-3px); box-shadow: var(--shadow); }
 .subject-chip .tag{
   font-size:.72rem;
   font-weight:700;
@@ -571,6 +576,7 @@ section{ padding: 88px 0; }
   overflow:hidden;
   box-shadow: var(--shadow);
 }
+.schedule-wrap{ overflow-x:auto; padding:4px 2px 12px; }
 .schedule th, .schedule td{
   text-align:left;
   padding: 14px 18px;
@@ -596,7 +602,9 @@ section{ padding: 88px 0; }
   display:grid;
   grid-template-columns: 44px 1fr;
   gap: 18px;
+  position:relative;
 }
+.step:not(:last-child)::before{ content:""; position:absolute; left:21px; top:48px; width:2px; height:calc(100% - 4px); background:var(--sunbeam); }
 .step-num{
   width:44px; height:44px;
   border-radius:50%;
@@ -696,9 +704,32 @@ footer a:hover{ color: var(--sunbeam); }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   .btn:hover{ transform:none; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
+
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .45s ease, transform .45s ease; }
+.reveal.is-visible{ opacity:1; transform:none; }
+.hero-admissions .hero-bg img{ object-position:center 48%; }
+@media (max-width: 720px){
+  .wrap{ padding:0 20px; }
+  .nav-avatars{ display:none; }
+  .schedule{ min-width:680px; }
+  .form-panel{ padding:24px 18px; }
 }
 
 /* Utility */
 .muted{ color: var(--ink-soft); }
 .center{ text-align:center; }
 .mt-0{ margin-top:0; }
+
+/* Content remains visible when JavaScript is unavailable. */
+.reveal{ opacity:1; transform:none; }
+.js .reveal{ opacity:0; transform:translateY(18px); }
+.js .reveal.is-visible{ opacity:1; transform:none; }
+
+/* Keep decorative effects calm and avoid continuous motion. */
+.leadership-highlight span::after,
+.hero h1::after,
+.hero-sub::after,
+.heading-flag::after,
+.eyebrow::after{ animation:none; }
