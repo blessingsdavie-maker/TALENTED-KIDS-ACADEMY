@@ -429,6 +429,64 @@ section{ padding: 88px 0; }
   background: transparent;
 }
 
+.leader-profile{
+  position:relative;
+  margin:0;
+  min-height:360px;
+  overflow:hidden;
+  border-radius:var(--radius);
+  background:var(--ink);
+  box-shadow:var(--shadow);
+}
+.leader-profile::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, transparent 40%, rgba(9,18,37,.88) 100%);
+  pointer-events:none;
+}
+.leader-profile img{
+  width:100%;
+  height:100%;
+  min-height:360px;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .35s ease;
+}
+.leader-profile:hover img{ transform:scale(1.04); }
+.leader-profile figcaption{
+  position:absolute;
+  z-index:1;
+  right:0;
+  bottom:0;
+  left:0;
+  padding:24px;
+  color:#fff;
+}
+.leader-profile figcaption::before{
+  content:"";
+  display:block;
+  width:42px;
+  height:4px;
+  margin-bottom:12px;
+  background:var(--sunbeam);
+}
+.leader-profile figcaption span{
+  display:block;
+  margin-bottom:4px;
+  color:var(--sunbeam);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.leader-profile figcaption strong{
+  display:block;
+  font-family:var(--display);
+  font-size:1.4rem;
+  line-height:1.15;
+}
+
 .two-col{
   display:grid;
   grid-template-columns: 1fr 1fr;
