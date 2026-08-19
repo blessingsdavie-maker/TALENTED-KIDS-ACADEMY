@@ -5,16 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelector('.nav-links');
 
   if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const isOpen = links.classList.toggle('open');
+    const setMenuState = isOpen => {
+      links.classList.toggle('open', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
-    });
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    toggle.addEventListener('click', () => setMenuState(!links.classList.contains('open')));
 
     links.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setMenuState(false);
     });
   }
 
