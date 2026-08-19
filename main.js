@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape') setMenuState(false);
     });
+
+    document.addEventListener('pointerdown', event => {
+      if (!links.contains(event.target) && !toggle.contains(event.target)) {
+        setMenuState(false);
+      }
+    });
   }
 
   const tabs = document.querySelectorAll('.band-tab');
