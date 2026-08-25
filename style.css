@@ -774,6 +774,16 @@ section{ padding: 88px 0; }
 .contact-card h3{ color:#fff; }
 .contact-line{ display:flex; gap:12px; margin-bottom:14px; font-size:.95rem; align-items:flex-start; }
 .contact-line strong{ display:block; color: var(--sunbeam); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; }
+.contact-line a{ color:inherit; text-decoration:none; }
+.contact-line a:hover{ color:var(--sunbeam); }
+.contact-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+.contact-card .btn-ghost{ color:#fff; border-color:rgba(255,255,255,.7); }
+.contact-card .btn-ghost:hover{ background:#fff; color:var(--ink); }
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"]{
+  border-color:var(--poppy);
+}
 
 /* ---------- Footer ---------- */
 footer{
@@ -804,7 +814,13 @@ footer a:hover{ color: var(--sunbeam); }
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
-  .btn:hover{ transform:none; }
+  *, *::before, *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .btn:hover, .card:hover, .subject-chip:hover, .step:hover{ transform:none; }
   .reveal{ opacity:1; transform:none; transition:none; }
 }
 
@@ -1365,3 +1381,26 @@ body.menu-open {
 .nav-cta .btn{ width:100%; justify-content:center; }
 .nav-avatars{ margin:4px 0 0; justify-content:center; }
 .nav-avatars img{ width:44px; height:44px; border-radius:8px; }
+
+@media (min-width: 861px){
+  .nav-toggle{ display:none; }
+  .nav-links{
+    position:static;
+    width:auto;
+    background:transparent;
+    flex-direction:row;
+    align-items:center;
+    gap:6px;
+    padding:0;
+    visibility:visible;
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+    border:0;
+    box-shadow:none;
+  }
+  .nav-links a{ padding:9px 16px; }
+  .nav-cta{ margin-left:6px; margin-top:0; }
+  .nav-avatars{ margin:0 0 0 16px; }
+  .nav-avatars img{ width:60px; height:60px; border-radius:18px; }
+}

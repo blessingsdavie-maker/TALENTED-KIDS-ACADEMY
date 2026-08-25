@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   
   const isMobileViewport = window.matchMedia('(max-width: 860px)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   
   // Add device class to html element for mobile-specific CSS
   if (isTouchDevice() && isMobileViewport) {
@@ -63,6 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
           panel.hidden = false;
         }
       });
+
+      tab.addEventListener('keydown', event => {
+        const tabIndex = Array.from(tabs).indexOf(tab);
+        let nextIndex = tabIndex;
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          nextIndex = (tabIndex + 1) % tabs.length;
+        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          nextIndex = (tabIndex - 1 + tabs.length) % tabs.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        tabs[nextIndex].focus();
+        tabs[nextIndex].click();
+      });
     });
   }
 
@@ -71,9 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', event => {
       event.preventDefault();
       if (!form.checkValidity()) {
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+          field.setAttribute('aria-invalid', String(!field.checkValidity()));
+        });
         form.reportValidity();
         return;
       }
+
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.setAttribute('aria-invalid', 'false');
+      });
 
       const success = document.getElementById('form-success');
       if (success) {
@@ -86,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scroll reveal with staggered animation (optimized for mobile)
   const revealItems = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealItems.length) {
+  if (prefersReducedMotion) {
+    revealItems.forEach(item => item.classList.add('is-visible'));
+  } else if ('IntersectionObserver' in window && revealItems.length) {
     const isMobile = window.matchMedia('(max-width: 720px)').matches;
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, index) => {
@@ -108,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Animate counter numbers on scroll (optimized for mobile)
   const facts = document.querySelectorAll('.fact strong');
-  if (facts.length) {
+  if (facts.length && !prefersReducedMotion) {
     const isMobileCounter = window.matchMedia('(max-width: 720px)').matches;
     const counterDuration = isMobileCounter ? 800 : 1200;
     
@@ -154,36 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     facts.forEach(fact => counterObserver.observe(fact));
   }
 
-  // Enhanced tab panel transitions (optimized for mobile)
-  const originalTabs = document.querySelectorAll('.band-tab');
-  if (originalTabs.length) {
-    const isMobileTab = window.matchMedia('(max-width: 720px)').matches;
-    const tabTransitionDuration = isMobileTab ? 200 : 300;
-    
-    originalTabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        originalTabs.forEach(item => item.setAttribute('aria-selected', 'false'));
-        this.setAttribute('aria-selected', 'true');
-
-        const panels = document.querySelectorAll('.band-panel');
-        panels.forEach(panel => {
-          panel.classList.remove('active');
-          setTimeout(() => {
-            panel.hidden = true;
-          }, tabTransitionDuration);
-        });
-
-        const targetPanel = document.getElementById(this.dataset.target);
-        if (targetPanel) {
-          targetPanel.hidden = false;
-          setTimeout(() => {
-            targetPanel.classList.add('active');
-          }, 10);
-        }
-      });
-    });
-  }
-
   // Smooth form field focus effects (optimized for mobile)
   const formFields = document.querySelectorAll('.field input, .field select, .field textarea');
   const isMobileDevice = window.matchMedia('(max-width: 600px)').matches;
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroBg = document.querySelector('.hero-bg img');
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
   
-  if (heroBg && !isMobile) {
+  if (heroBg && !isMobile && !prefersReducedMotion) {
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       if (window.scrollY < 800) {
