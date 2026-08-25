@@ -427,6 +427,51 @@ section{ padding: 88px 0; }
 .section-ink .eyebrow{ color: var(--sunbeam); }
 .section-ink .eyebrow::before{ background: var(--sunbeam); }
 
+/* ---------- Photo-led story moments ---------- */
+.school-life{ overflow:hidden; background:var(--paper); }
+.school-life-grid, .admissions-note-grid, .learning-in-action-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:64px;
+  align-items:center;
+}
+.school-life-copy p, .admissions-note-grid p, .learning-in-action-grid p{ max-width:48ch; color:var(--ink-soft); }
+.text-link{ display:inline-flex; align-items:center; gap:10px; color:var(--leaf-dark); font-weight:700; text-decoration:none; }
+.text-link span{ transition:transform .2s ease; }
+.text-link:hover span{ transform:translateX(5px); }
+.school-life-photos{ position:relative; min-height:410px; }
+.photo-tile{ position:absolute; margin:0; overflow:hidden; border-radius:var(--radius); box-shadow:var(--shadow); background:var(--ink); }
+.photo-tile img{ width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
+.photo-tile:hover img, .learning-image:hover img, .admissions-note-image:hover img{ transform:scale(1.04); }
+.photo-tile-main{ inset:0 24% 0 0; }
+.photo-tile-main figcaption{ position:absolute; right:18px; bottom:16px; left:18px; color:#fff; font-family:var(--display); font-size:1.08rem; text-shadow:0 2px 10px rgba(0,0,0,.6); }
+.photo-tile-small{ right:0; width:30%; height:44%; border:7px solid var(--paper); }
+.photo-tile-small img{ object-position:center; }
+.photo-tile-offset{ bottom:0; }
+.admissions-note{ padding-top:72px; padding-bottom:72px; }
+.admissions-note-grid{ grid-template-columns:.9fr 1.1fr; }
+.admissions-note-image, .learning-image{ position:relative; overflow:hidden; border-radius:var(--radius); box-shadow:var(--shadow); }
+.admissions-note-image{ height:330px; }
+.admissions-note-image img, .learning-image img{ width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
+.learning-in-action{ padding:88px 0; background:#fff8e5; }
+.learning-in-action-grid{ grid-template-columns:1fr 1fr; }
+.learning-image{ height:360px; transform:rotate(1.5deg); }
+.image-caption{ position:absolute; right:16px; bottom:14px; left:16px; color:#fff; font-family:var(--display); font-size:1.05rem; text-shadow:0 2px 10px rgba(0,0,0,.7); }
+.mini-stats{ display:flex; gap:24px; flex-wrap:wrap; margin-top:26px; color:var(--leaf-dark); font-weight:700; }
+.mini-stats span{ display:flex; align-items:center; gap:8px; }
+.mini-stats strong{ color:var(--poppy); font-family:var(--display); font-size:1.35rem; }
+@media (max-width:860px){
+  .school-life-grid, .admissions-note-grid, .learning-in-action-grid{ grid-template-columns:1fr; gap:36px; }
+  .school-life-photos{ min-height:330px; }
+  .admissions-note-image{ height:300px; }
+  .learning-image{ height:320px; }
+}
+@media (max-width:520px){
+  .school-life-photos{ min-height:270px; }
+  .photo-tile-main{ inset:0 19% 0 0; }
+  .photo-tile-small{ width:27%; border-width:4px; }
+}
+
 .leadership-highlight span{
   position: relative;
   z-index: 1;
