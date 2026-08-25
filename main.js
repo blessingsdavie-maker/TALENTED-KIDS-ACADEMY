@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panel) {
           panel.classList.add('active');
           panel.hidden = false;
+          panel.classList.remove('panel-switch');
+          requestAnimationFrame(() => panel.classList.add('panel-switch'));
         }
       });
 
@@ -87,6 +89,60 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Make each subject card an accessible, expandable learning detail.
+  const subjectDetails = {
+    Literacy: 'Builds communication through reading, writing, speaking, and listening.',
+    Numeracy: 'Develops confident problem-solving with practical, age-appropriate maths.',
+    Science: 'Turns observation and questions into investigations and explanations.',
+    Discovery: 'Connects children with their environment through guided exploration.',
+    Creative: 'Makes room for imagination through art, music, movement, and design.',
+    'Social Studies': 'Helps learners understand their community and their place in it.',
+    Enrichment: 'Extends classroom learning through music, PE, ICT, and library time.',
+    Language: 'Builds communication and cultural awareness through a second language.',
+    Leadership: 'Gives older learners practice in responsibility, research, and presentation.'
+  };
+  const subjectIcons = {
+    Literacy: '&#128214;', Numeracy: '&#128290;', Science: '&#128300;', ICT: '&#128187;',
+    Art: '&#127912;', Music: '&#127925;', Discovery: '&#128065;', Creative: '&#127912;',
+    'Social Studies': '&#127758;', Enrichment: '&#9733;', Language: '&#128172;', Leadership: '&#9733;'
+  };
+  document.querySelectorAll('.subject-chip').forEach(card => {
+    const tag = card.querySelector('.tag');
+    const tagName = tag ? tag.textContent.trim() : 'Learning';
+    const title = card.querySelector('h4');
+    const titleName = title ? title.textContent.trim() : '';
+    const iconName = /ict|coding/i.test(titleName) ? 'ICT' : /music/i.test(titleName) ? 'Music' : /art/i.test(titleName) ? 'Art' : tagName;
+    const icon = document.createElement('span');
+    icon.className = 'subject-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.innerHTML = subjectIcons[iconName] || '&#10024;';
+    card.insertBefore(icon, card.firstChild);
+
+    const more = document.createElement('span');
+    more.className = 'subject-more';
+    more.textContent = 'View focus';
+    more.setAttribute('aria-hidden', 'true');
+    const detail = document.createElement('p');
+    detail.className = 'subject-detail';
+    detail.textContent = subjectDetails[tagName] || 'A practical learning experience designed for this stage.';
+    card.append(more, detail);
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-expanded', 'false');
+
+    const toggleSubject = () => {
+      const expanded = card.classList.toggle('expanded');
+      card.setAttribute('aria-expanded', String(expanded));
+    };
+    card.addEventListener('click', toggleSubject);
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleSubject();
+      }
+    });
+  });
 
   const form = document.getElementById('admissions-form');
   if (form) {
@@ -149,10 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = entry.target;
           target.classList.add('counted');
           const finalValue = target.textContent;
-          const numericValue = parseFloat(finalValue.replace(/[^\d.:]/g, ''));
+          const numericValue = Number(target.dataset.count || finalValue.replace(/[^\d]/g, ''));
           
           if (!isNaN(numericValue)) {
-            const isRatio = finalValue.includes(':');
+            const prefix = target.dataset.prefix || '';
             let currentValue = 0;
             const increment = numericValue / 60;
             const startTime = Date.now();
@@ -162,12 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const progress = Math.min(elapsed / counterDuration, 1);
               currentValue = Math.floor(numericValue * progress);
               
-              if (isRatio) {
-                const parts = finalValue.split(':');
-                target.textContent = currentValue + ':' + parts[1];
-              } else {
-                target.textContent = currentValue;
-              }
+              target.textContent = prefix + currentValue;
 
               if (progress < 1) {
                 requestAnimationFrame(animate);
