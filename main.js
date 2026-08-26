@@ -2,21 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js');
   
-  // Detect device capabilities
-  const isTouchDevice = () => {
-    return (('ontouchstart' in window) ||
-            (navigator.maxTouchPoints > 0) ||
-            (navigator.msMaxTouchPoints > 0));
-  };
-  
-  const isMobileViewport = window.matchMedia('(max-width: 860px)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
-  // Add device class to html element for mobile-specific CSS
-  if (isTouchDevice() && isMobileViewport) {
-    document.documentElement.classList.add('is-touch-device');
-    document.documentElement.classList.add('is-mobile');
-  }
   
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
@@ -174,11 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prefersReducedMotion) {
     revealItems.forEach(item => item.classList.add('is-visible'));
   } else if ('IntersectionObserver' in window && revealItems.length) {
-    const isMobile = window.matchMedia('(max-width: 720px)').matches;
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          // Reduce stagger delay on mobile for snappier feel
+          const isMobile = window.matchMedia('(max-width: 720px)').matches;
           const delay = isMobile ? Math.min(index, 3) : Math.min(index, 5);
           entry.target.setAttribute('data-delay', delay);
           setTimeout(() => {
@@ -196,9 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Animate counter numbers on scroll (optimized for mobile)
   const facts = document.querySelectorAll('.fact strong');
   if (facts.length && !prefersReducedMotion) {
-    const isMobileCounter = window.matchMedia('(max-width: 720px)').matches;
-    const counterDuration = isMobileCounter ? 800 : 1200;
-    
     const counterObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
@@ -206,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
           target.classList.add('counted');
           const finalValue = target.textContent;
           const numericValue = Number(target.dataset.count || finalValue.replace(/[^\d]/g, ''));
+          const counterDuration = window.matchMedia('(max-width: 720px)').matches ? 800 : 1200;
           
           if (!isNaN(numericValue)) {
             const prefix = target.dataset.prefix || '';
@@ -238,18 +221,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Smooth form field focus effects (optimized for mobile)
   const formFields = document.querySelectorAll('.field input, .field select, .field textarea');
-  const isMobileDevice = window.matchMedia('(max-width: 600px)').matches;
   
   formFields.forEach(field => {
     field.addEventListener('focus', function() {
       // Only apply scale on desktop for better mobile performance
-      if (!isMobileDevice) {
+      if (!window.matchMedia('(max-width: 600px)').matches) {
         this.parentElement.style.transform = 'scale(1.01)';
       }
       this.parentElement.style.borderColor = 'var(--leaf)';
     });
     field.addEventListener('blur', function() {
-      if (!isMobileDevice) {
+      if (!window.matchMedia('(max-width: 600px)').matches) {
         this.parentElement.style.transform = 'scale(1)';
       }
       this.parentElement.style.borderColor = '';
@@ -258,13 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Parallax effect on hero background on scroll (disabled on mobile for performance)
   const heroBg = document.querySelector('.hero-bg img');
-  const isMobile = window.matchMedia('(max-width: 860px)').matches;
   
-  if (heroBg && !isMobile && !prefersReducedMotion) {
+  if (heroBg && !prefersReducedMotion) {
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      if (window.scrollY < 800) {
+      if (!window.matchMedia('(max-width: 860px)').matches && scrollY < 800) {
         heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+      } else if (window.matchMedia('(max-width: 860px)').matches) {
+        heroBg.style.transform = '';
       }
     }, { passive: true });
   }
