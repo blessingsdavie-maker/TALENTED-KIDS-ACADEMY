@@ -1,9 +1,9 @@
 // Shared navigation and page interactions.
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js');
-  
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
+
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
 
@@ -161,9 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
     revealItems.forEach(item => item.classList.add('is-visible'));
   } else if ('IntersectionObserver' in window && revealItems.length) {
     const observer = new IntersectionObserver(entries => {
+      const isMobile = window.matchMedia('(max-width: 720px)').matches;
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          const isMobile = window.matchMedia('(max-width: 720px)').matches;
+          // Reduce stagger delay on mobile for snappier feel
           const delay = isMobile ? Math.min(index, 3) : Math.min(index, 5);
           entry.target.setAttribute('data-delay', delay);
           setTimeout(() => {
@@ -182,13 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const facts = document.querySelectorAll('.fact strong');
   if (facts.length && !prefersReducedMotion) {
     const counterObserver = new IntersectionObserver(entries => {
+      const counterDuration = window.matchMedia('(max-width: 720px)').matches ? 800 : 1200;
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
           const target = entry.target;
           target.classList.add('counted');
           const finalValue = target.textContent;
           const numericValue = Number(target.dataset.count || finalValue.replace(/[^\d]/g, ''));
-          const counterDuration = window.matchMedia('(max-width: 720px)').matches ? 800 : 1200;
           
           if (!isNaN(numericValue)) {
             const prefix = target.dataset.prefix || '';
@@ -219,35 +220,22 @@ document.addEventListener('DOMContentLoaded', () => {
     facts.forEach(fact => counterObserver.observe(fact));
   }
 
-  // Smooth form field focus effects (optimized for mobile)
-  const formFields = document.querySelectorAll('.field input, .field select, .field textarea');
-  
-  formFields.forEach(field => {
-    field.addEventListener('focus', function() {
-      // Only apply scale on desktop for better mobile performance
-      if (!window.matchMedia('(max-width: 600px)').matches) {
-        this.parentElement.style.transform = 'scale(1.01)';
-      }
-      this.parentElement.style.borderColor = 'var(--leaf)';
-    });
-    field.addEventListener('blur', function() {
-      if (!window.matchMedia('(max-width: 600px)').matches) {
-        this.parentElement.style.transform = 'scale(1)';
-      }
-      this.parentElement.style.borderColor = '';
-    });
-  });
+  // Form field focus effects are now handled by :focus-within in style.css
+  // (previously duplicated here via inline style manipulation on every field).
 
   // Parallax effect on hero background on scroll (disabled on mobile for performance)
   const heroBg = document.querySelector('.hero-bg img');
-  
+
   if (heroBg && !prefersReducedMotion) {
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (!window.matchMedia('(max-width: 860px)').matches && scrollY < 800) {
-        heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
-      } else if (window.matchMedia('(max-width: 860px)').matches) {
+      const isMobile = window.matchMedia('(max-width: 860px)').matches;
+      if (isMobile) {
         heroBg.style.transform = '';
+        return;
+      }
+      const scrollY = window.scrollY;
+      if (scrollY < 800) {
+        heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
       }
     }, { passive: true });
   }
