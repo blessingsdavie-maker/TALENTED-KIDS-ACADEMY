@@ -6,13 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
+  const nav = document.querySelector('.nav');
 
-  if (toggle && links) {
+  if (toggle && links && nav) {
+    let lastFocusedElement = null;
     const setMenuState = isOpen => {
       links.classList.toggle('open', isOpen);
+      nav.classList.toggle('menu-open', isOpen);
       document.body.classList.toggle('menu-open', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+
+      if (isOpen) {
+        lastFocusedElement = document.activeElement;
+        requestAnimationFrame(() => {
+          const firstLink = links.querySelector('a');
+          if (firstLink) firstLink.focus();
+        });
+      } else if (lastFocusedElement && typeof lastFocusedElement.focus === 'function' && lastFocusedElement.offsetParent !== null) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     };
 
     toggle.addEventListener('click', () => setMenuState(!links.classList.contains('open')));
@@ -25,8 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.key === 'Escape') setMenuState(false);
     });
 
+    links.addEventListener('keydown', event => {
+      if (event.key !== 'Tab') return;
+      const focusableLinks = Array.from(links.querySelectorAll('a'));
+      if (!focusableLinks.length) return;
+
+      const firstLink = focusableLinks[0];
+      const lastLink = focusableLinks[focusableLinks.length - 1];
+      if (event.shiftKey && document.activeElement === firstLink) {
+        event.preventDefault();
+        lastLink.focus();
+      } else if (!event.shiftKey && document.activeElement === lastLink) {
+        event.preventDefault();
+        firstLink.focus();
+      }
+    });
+
     document.addEventListener('pointerdown', event => {
       if (!links.contains(event.target) && !toggle.contains(event.target)) {
+        setMenuState(false);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 861 && links.classList.contains('open')) {
         setMenuState(false);
       }
     });

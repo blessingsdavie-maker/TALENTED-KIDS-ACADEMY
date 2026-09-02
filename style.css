@@ -1404,18 +1404,19 @@ body.menu-open {
   justify-content:flex-start;
   gap:8px;
   padding:14px;
-  visibility:hidden;
-  opacity:0;
-  transform:translateY(-8px) scale(.98);
+  visibility:visible;
+  opacity:1;
+  transform:none;
   transform-origin:top right;
-  pointer-events:none;
+  pointer-events:auto;
   transition:transform .18s ease, opacity .18s ease, visibility .18s ease;
   border:1px solid rgba(255,255,255,.18);
   border-top:4px solid var(--sunbeam);
   border-radius:var(--radius);
   box-shadow:0 16px 34px rgba(9,18,37,.3);
 }
-.nav-links.open{ visibility:visible; opacity:1; transform:none; pointer-events:auto; }
+.js .nav-links{ visibility:hidden; opacity:0; transform:translateY(-8px) scale(.98); pointer-events:none; }
+.js .nav-links.open{ visibility:visible; opacity:1; transform:none; pointer-events:auto; }
 .nav-links a{ padding:13px 12px; }
 .nav-cta{ margin:8px 0 0; }
 .nav-cta .btn{ width:100%; justify-content:center; }
@@ -1424,7 +1425,7 @@ body.menu-open {
 
 @media (min-width: 861px){
   .nav-toggle{ display:none; }
-  .nav-links{
+  .js .nav-links{
     position:static;
     width:auto;
     background:transparent;
@@ -1558,7 +1559,7 @@ body.menu-open {
     pointer-events:none;
     transition:opacity .24s ease;
   }
-  .nav:has(.nav-links.open)::after{
+  .nav.menu-open::after{
     opacity:1;
     pointer-events:auto;
   }
@@ -1567,6 +1568,7 @@ body.menu-open {
     top:0;
     right:0;
     width:min(88vw, 360px);
+    height:100vh;
     height:100dvh;
     z-index:3;
     display:flex;
@@ -1585,7 +1587,7 @@ body.menu-open {
     transform-origin:right center;
     transition:transform .28s cubic-bezier(.22,1,.36,1), opacity .2s ease, visibility .2s ease;
   }
-  .nav-links.open{ transform:translateX(0); }
+  .js .nav-links.open{ transform:translateX(0); }
   .nav-links a{
     position:relative;
     z-index:1;
@@ -1599,6 +1601,11 @@ body.menu-open {
   .nav-links a[aria-current="page"]{ background:rgba(255,255,255,.16); }
   .nav-cta{ margin:14px 0 0; }
   .nav-cta .btn{ background:var(--poppy); border-color:transparent; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .nav-links,
+  .nav::after{ transition:none; }
 }
 
 @media (max-width:600px){
