@@ -370,7 +370,7 @@ section{ padding: 88px 0; }
 .flower-illustration .flower-stem{
   stroke-dasharray: 180;
   stroke-dashoffset: 180;
-  animation: flowerStemGrow 2.4s ease-out .35s forwards;
+  animation: flowerStemGrow 8s ease-in-out infinite;
 }
 .flower-illustration .flower-leaf,
 .flower-illustration .flower-bloom{
@@ -378,20 +378,35 @@ section{ padding: 88px 0; }
   transform-box:fill-box;
   transform-origin:center;
 }
-.flower-illustration .flower-leaf-left{ animation: flowerLeafIn .6s ease-out 1.25s forwards; }
-.flower-illustration .flower-leaf-right{ animation: flowerLeafIn .6s ease-out 1.65s forwards; }
-.flower-illustration .flower-leaf-top{ animation: flowerLeafIn .6s ease-out 2.05s forwards; }
-.flower-illustration .flower-bloom{ animation: flowerBloomIn .8s cubic-bezier(.22,1,.36,1) 2.45s forwards; }
-.flower-illustration .flower-stage-seed{ animation: flowerSeedFade .7s ease-out 2.05s forwards; }
+.flower-illustration .flower-leaf-left{ animation: flowerLeafIn 8s ease-in-out infinite; }
+.flower-illustration .flower-leaf-right{ animation: flowerLeafIn 8s ease-in-out infinite; }
+.flower-illustration .flower-leaf-top{ animation: flowerLeafIn 8s ease-in-out infinite; }
+.flower-illustration .flower-bloom{ animation: flowerBloomIn 8s cubic-bezier(.22,1,.36,1) infinite; }
+.flower-illustration .flower-stage-seed{ animation: flowerSeedFade 8s ease-in-out infinite; }
 .flower-illustration .flower-timeline circle{ animation: flowerDotPulse 2.8s ease-in-out infinite; }
 .flower-illustration .flower-timeline circle:nth-of-type(2){ animation-delay:.35s; }
 .flower-illustration .flower-timeline circle:nth-of-type(3){ animation-delay:.7s; }
 .flower-illustration .flower-timeline circle:nth-of-type(4){ animation-delay:1.05s; }
 
-@keyframes flowerStemGrow{ to{ stroke-dashoffset:0; } }
-@keyframes flowerLeafIn{ from{ opacity:0; transform:scale(0) rotate(-18deg); } to{ opacity:1; transform:scale(1) rotate(0); } }
-@keyframes flowerBloomIn{ from{ opacity:0; transform:scale(.15) rotate(-18deg); } to{ opacity:1; transform:scale(1) rotate(0); } }
-@keyframes flowerSeedFade{ to{ opacity:.45; transform:translateY(3px) scale(.9); } }
+@keyframes flowerStemGrow{
+  0%, 12%{ stroke-dashoffset:180; }
+  40%, 84%{ stroke-dashoffset:0; }
+  100%{ stroke-dashoffset:180; }
+}
+@keyframes flowerLeafIn{
+  0%, 20%{ opacity:0; transform:scale(0) rotate(-18deg); }
+  42%, 84%{ opacity:1; transform:scale(1) rotate(0); }
+  100%{ opacity:0; transform:scale(0) rotate(-18deg); }
+}
+@keyframes flowerBloomIn{
+  0%, 34%{ opacity:0; transform:scale(.15) rotate(-18deg); }
+  55%, 84%{ opacity:1; transform:scale(1) rotate(0); }
+  100%{ opacity:0; transform:scale(.15) rotate(-18deg); }
+}
+@keyframes flowerSeedFade{
+  0%, 78%{ opacity:1; transform:none; }
+  88%, 100%{ opacity:.45; transform:translateY(3px) scale(.9); }
+}
 @keyframes flowerDotPulse{ 0%,100%{ opacity:.62; } 50%{ opacity:1; } }
 
 /* facts strip */
