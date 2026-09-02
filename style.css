@@ -1300,15 +1300,38 @@ body.menu-open {
 
   .hero{
     min-height: 600px;
-    padding: 72px 0 54px;
+    padding: 72px 0 calc(54px + env(safe-area-inset-bottom)) !important;
   }
 
   .hero .wrap{ gap: 30px; }
+  .hero-bg img{ object-position: 62% 34%; }
+  .hero-bg::after{
+    background: linear-gradient(180deg, rgba(14,28,54,0.74) 0%, rgba(14,28,54,0.86) 68%, rgba(14,28,54,0.96) 100%);
+  }
+  .hero h1{
+    max-width: 16ch;
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    line-height: 1.08;
+  }
+  .hero-sub{
+    max-width: 38ch;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .hero-motto{ margin-top: -4px; }
+  .hero-actions{ gap: 10px; margin-top: 22px; }
+  .hero-actions .btn{
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
   .growth-line-wrap{
     width: min(100%, 320px);
     justify-self:start;
     transform: rotate(0);
   }
+
+  .hero-admissions .hero-bg img{ object-position: 58% 44%; }
   
   .hero-sub {
     animation: slideUp .6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1346,6 +1369,13 @@ body.menu-open {
   html {
     scroll-behavior: auto;
   }
+}
+
+@media (max-width: 380px){
+  .wrap{ padding-left:16px; padding-right:16px; }
+  .hero{ min-height: 640px; }
+  .hero .wrap{ gap: 24px; }
+  .growth-line-wrap{ width: 100%; }
 }
 
 /* Utility */
