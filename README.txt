@@ -1,0 +1,1 @@
+Open index.html. The redesign uses the supplied logo, school-trip photo and director photo. It links to the existing academics.html and admissions.html pages.

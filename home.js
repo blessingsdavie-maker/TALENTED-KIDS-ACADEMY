@@ -1,0 +1,1 @@
+const b=document.querySelector('.menu'),m=document.querySelector('#menu');if(b&&m){b.onclick=()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)}}

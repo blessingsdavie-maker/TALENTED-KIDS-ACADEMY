@@ -1,256 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TALENTED KIDS ACADEMY | Primary School in Eldoret</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Talented Kids Academy — primary school in Langas, Eldoret, Kenya.">
+<title>Talented Kids Academy | Eldoret</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
-
+<div class="top">📍 Langas Dukambili, Eldoret, Kenya <span><a href="tel:+254768928241">0768 928 241</a> · <a href="mailto:talentedkidsacademy06@gmail.com">Email us</a></span></div>
 <nav class="nav">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="TALENTED KIDS ACADEMY home">
-      <img src="TALENTED_KIDS_LOGO.png" alt="TALENTED KIDS ACADEMY logo" class="brand-mark">
-      <span class="brand-name">TALENTED KIDS ACADEMY<span>Primary School</span></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">&#9776;</button>
-    <ul class="nav-links" id="primary-navigation">
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="academics.html">Academics</a></li>
-      <li><a href="admissions.html">Admissions</a></li>
-      <li class="nav-cta"><a class="btn btn-primary" href="admissions.html">Enrol Now</a></li>
-      <li class="nav-avatars">
-        <img src="school_boy.jpg" alt="School boy">
-        <img src="school_girl.jpg" alt="School girl">
-      </li>
-    </ul>
+ <div class="wrap navin">
+  <a class="brand" href="index.html"><img src="TALENTED_KIDS_LOGO.png" alt="Talented Kids Academy logo"><span><b>TALENTED KIDS ACADEMY</b><small>Primary School</small></span></a>
+  <button class="menu" aria-expanded="false" aria-controls="menu">☰</button>
+  <div id="menu" class="links">
+   <a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="#life">School Life</a><a href="admissions.html">Admissions</a><a class="navcta" href="admissions.html#application">Enrol Now</a>
   </div>
+ </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <img src="SCHOOL_TRIP.jpeg" alt="School trip background" fetchpriority="high" />
+<main>
+<section class="hero">
+ <div class="photo-placeholder hero-photo-placeholder" role="img" aria-label="School trip photo placeholder"><span>School Trip Photo</span><small>Replace with a school activity photo</small></div>
+ <div class="shade"></div>
+ <div class="wrap heroIn">
+  <div class="copy">
+   <p class="kicker">TALENTED KIDS ACADEMY · ELDORET</p>
+   <h1>Where every child has room to <em>grow.</em></h1>
+   <p class="lead">A nurturing primary school community in Langas, Eldoret, helping children build strong foundations, confidence, character and a love of learning.</p>
+   <div class="actions"><a class="btn gold" href="admissions.html#application">Start an application →</a><a class="btn outline" href="#life">Explore school life</a></div>
+   <p class="note">● Admissions enquiries welcome · Mon–Fri, 7:30am–4:00pm</p>
   </div>
-  <div class="wrap">
-    <div>
-      <div class="eyebrow" style="color:#fff;">Playgroup &ndash; Grade 6</div>
-      <h1 style="max-width:22ch;">Where curious minds grow, one small step at a time.</h1>
-      <p class="hero-sub">TALENTED KIDS ACADEMY is a neighbourhood primary school where every child is known by name, encouraged to ask questions, and given room to grow — academically, socially, and creatively through a competency-based curriculum from Playgroup to Grade 6.</p>
-      <p class="hero-motto">&ldquo;I am the head and not the tail.&rdquo; &mdash; Deuteronomy 28:13</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="admissions.html">Start Enrolment</a>
-        <a class="btn btn-ghost" href="academics.html">Explore Academics</a>
-      </div>
-    </div>
-    <div class="growth-line-wrap">
-      <svg class="flower-illustration" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated illustration of a flower growing from a seed in Kindergarten to a bloom in Grade 6">
-        <defs>
-          <linearGradient id="flower-sky" x1="210" y1="0" x2="210" y2="320" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#EAF5F1"/>
-            <stop offset="1" stop-color="#FDFCF9"/>
-          </linearGradient>
-          <linearGradient id="stem-green" x1="210" y1="262" x2="210" y2="75" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#185941"/>
-            <stop offset="1" stop-color="#53A776"/>
-          </linearGradient>
-          <filter id="flower-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="5" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <rect width="420" height="320" rx="20" fill="url(#flower-sky)"/>
-        <path d="M34 263C118 246 302 246 386 263" stroke="#C9DCCF" stroke-width="2" stroke-linecap="round"/>
-        <path d="M52 270C145 258 275 258 368 270" stroke="#E0EAE1" stroke-width="2" stroke-linecap="round"/>
-
-        <g class="flower-stage flower-stage-seed">
-          <ellipse cx="210" cy="258" rx="12" ry="7" fill="#8B5E3C"/>
-          <path d="M199 258C202 251 218 251 221 258" stroke="#5D402C" stroke-width="2" stroke-linecap="round"/>
-        </g>
-        <path class="flower-stem" d="M210 258C209 220 211 166 210 93" stroke="url(#stem-green)" stroke-width="7" stroke-linecap="round"/>
-        <path class="flower-leaf flower-leaf-left" d="M209 205C181 190 163 197 151 219C177 222 195 218 209 205Z" fill="#53A776"/>
-        <path class="flower-leaf flower-leaf-right" d="M210 158C238 143 257 150 270 171C242 175 224 169 210 158Z" fill="#27805E"/>
-        <path class="flower-leaf flower-leaf-top" d="M210 120C190 108 179 113 173 128C190 132 202 128 210 120Z" fill="#71B989"/>
-        <g class="flower-bloom" filter="url(#flower-glow)">
-          <circle cx="210" cy="72" r="12" fill="#F5C84C"/>
-          <path class="flower-petal petal-top" d="M210 64C194 49 199 32 210 24C221 32 226 49 210 64Z" fill="#E8604C"/>
-          <path class="flower-petal petal-right" d="M218 72C233 56 249 63 254 76C242 86 226 87 218 72Z" fill="#F2785F"/>
-          <path class="flower-petal petal-bottom" d="M210 80C226 95 221 111 210 119C199 111 194 95 210 80Z" fill="#E8604C"/>
-          <path class="flower-petal petal-left" d="M202 72C187 87 171 80 166 68C178 58 194 57 202 72Z" fill="#F2785F"/>
-          <circle cx="210" cy="72" r="7" fill="#F5C84C"/>
-        </g>
-
-        <g class="flower-timeline" font-family="Inter, sans-serif">
-          <path d="M326 259V73" stroke="#B7CDBE" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="326" cy="259" r="5" fill="#E8604C"/>
-          <circle cx="326" cy="201" r="5" fill="#27805E"/>
-          <circle cx="326" cy="137" r="5" fill="#27805E"/>
-          <circle cx="326" cy="73" r="6" fill="#F5C84C"/>
-          <text x="342" y="263" font-size="10" fill="#2F4066">KINDERGARTEN</text>
-          <text x="342" y="205" font-size="10" fill="#2F4066">GRADE 2</text>
-          <text x="342" y="141" font-size="10" fill="#2F4066">GRADE 4</text>
-          <text x="342" y="77" font-size="10" fill="#2F4066">GRADE 6</text>
-        </g>
-      </svg>
-    </div>
-  </div>
-</header>
-  <div class="wrap">
-    <div class="facts">
-      <div class="fact"><strong data-count="212">212</strong><span>Students, PLAYGROUP&ndash;GRADE 6</span></div>
-      <div class="fact"><strong data-count="14" data-prefix="1:">1:14</strong><span>Teacher to student ratio</span></div>
-      <div class="fact"><strong data-count="20">20</strong><span>Years serving TALENTED KIDS ACADEMY</span></div>
-      <div class="fact"><strong data-count="18">18</strong><span>Avg. class size</span></div>
-    </div>
-  </div>
-
-<section class="section-dim">
-  <div class="wrap">
-    <div class="eyebrow">Competency-Based Curriculum</div>
-    <h2 class="heading-flag">A clear learning path from Playgroup to Grade 6</h2>
-    <p>Our school builds student competencies in communication, critical thinking, creativity, and collaboration through learning goals designed for each stage of childhood. Every child moves ahead with the skills they need, not just a grade level.</p>
-  </div>
+ </div>
+ <div class="facts"><div class="wrap factin">
+  <div><b>Playgroup – Grade 6</b><small>A learning journey for every stage</small></div>
+  <div><b>Competency-Based Learning</b><small>Skills, knowledge and confidence</small></div>
+  <div><b>Langas, Eldoret</b><small>A school community close to home</small></div>
+ </div></div>
 </section>
 
-<section class="section-dim faq-section" id="faq">
-  <div class="wrap">
-    <div class="eyebrow">Questions, answered</div>
-    <h2 class="heading-flag">A few things families ask</h2>
-    <div class="faq-list">
-      <details class="faq-item"><summary>Which grades does the school offer?</summary><p>We welcome learners from Playgroup through Grade 6, with age-appropriate learning goals at every stage.</p></details>
-      <details class="faq-item"><summary>Can we visit before applying?</summary><p>Yes. Contact the admissions office to arrange a weekday morning visit and see a class in action.</p></details>
-      <details class="faq-item"><summary>How do I begin an application?</summary><p>Complete the enquiry form on our Admissions page, then our team will follow up to arrange the next step.</p></details>
-    </div>
+<section class="section">
+ <div class="wrap split">
+  <div>
+   <p class="eyebrow">Welcome to TKA</p>
+   <h2>A school where children are known, encouraged and challenged.</h2>
+   <p>Talented Kids Academy is built around a simple belief: every child has potential. Our learning experience combines clear academic foundations with discovery, practical work, creativity and opportunities to grow in confidence.</p>
+   <p>From Playgroup through Grade 6, children move through age-appropriate learning experiences designed to help them become increasingly independent and responsible.</p>
+   <a class="textlink" href="academics.html">Discover our approach →</a>
   </div>
+  <aside class="director">
+   <div class="photo-placeholder director-photo-placeholder" role="img" aria-label="Director photo placeholder"><span>Director Photo</span><small>Replace with a leadership portrait</small></div>
+   <div><p class="eyebrow light">Leadership</p><h3>Growing confident learners starts with a caring community.</h3><p>We want every learner to discover what they can do, take pride in their progress and develop the character to lead well.</p><b>Talented Kids Academy</b></div>
+  </aside>
+ </div>
 </section>
 
-<section class="activities-section" id="activities">
-  <div class="wrap">
-    <div class="eyebrow">School life</div>
-    <h2 class="heading-flag">Room to explore, play, and belong</h2>
-    <div class="activity-gallery">
-      <figure class="activity-feature reveal"><img src="SCHOOL_TRIP.jpeg" alt="Learners enjoying an outdoor school trip" loading="lazy"><figcaption>School trips</figcaption></figure>
-      <figure class="activity-tile reveal" data-delay="1"><img src="DIRECTOR.jpeg" alt="School leadership supporting learners" loading="lazy"><figcaption>Community</figcaption></figure>
-      <figure class="activity-tile reveal" data-delay="2"><img src="GENERAL_MANAGER.jpeg" alt="School community member" loading="lazy"><figcaption>Clubs &amp; creativity</figcaption></figure>
-    </div>
-    <div class="activity-list" aria-label="Activities at TALENTED KIDS ACADEMY">
-      <div><span aria-hidden="true">&#9917;</span><strong>Sports</strong><small>Move, play, and build teamwork.</small></div>
-      <div><span aria-hidden="true">&#127925;</span><strong>Music</strong><small>Find rhythm and confidence.</small></div>
-      <div><span aria-hidden="true">&#10024;</span><strong>Clubs</strong><small>Follow interests beyond lessons.</small></div>
-      <div><span aria-hidden="true">&#128506;</span><strong>Trips</strong><small>Discover the world together.</small></div>
-    </div>
+<section class="section soft">
+ <div class="wrap">
+  <div class="heading center"><p class="eyebrow">Why families choose TKA</p><h2>Strong foundations. Wider opportunities.</h2><p>Show parents not only what children learn, but what school feels like.</p></div>
+  <div class="cards">
+   <article><i>01</i><strong>✦</strong><h3>Academic foundations</h3><p>Focused literacy, numeracy, inquiry and age-appropriate progression from the early years through Grade 6.</p></article>
+   <article><i>02</i><strong>◎</strong><h3>Whole-child growth</h3><p>Children develop social skills, personal confidence, creativity and responsibility alongside academic learning.</p></article>
+   <article><i>03</i><strong>↗</strong><h3>Learning beyond class</h3><p>Trips, outdoor learning, art, music, ICT and projects give children opportunities to apply what they learn.</p></article>
+   <article><i>04</i><strong>♡</strong><h3>A caring environment</h3><p>A school community designed to help children feel supported, participate confidently and enjoy learning.</p></article>
   </div>
+ </div>
 </section>
 
-<!-- TALENTED KIDS ACADEMY -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Why families choose us</div>
-    <h2 class="heading-flag">A school that feels like a second home
-      <svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 8 Q40 2 80 8 T160 8 T240 8 T298 8"/></svg>
-    </h2>
-    <div class="card-grid">
-      <div class="card reveal" data-delay="1">
-        <div class="icon icon-leaf">&#127793;</div>
-        <h3>Small class sizes</h3>
-        <p>With about 18 children per classroom, teachers get to know how each child learns best &mdash; and adjust for it.</p>
-      </div>
-      <div class="card reveal" data-delay="2">
-        <div class="icon icon-sun">&#9728;&#65039;</div>
-        <h3>Play-based learning</h3>
-        <p>Structured lessons are balanced with outdoor time, art, and hands-on projects, especially in the early grades.</p>
-      </div>
-      <div class="card reveal" data-delay="3">
-        <div class="icon icon-poppy">&#129309;</div>
-        <h3>A close community</h3>
-        <p>Weekly assemblies, family workshops, and an open-door office mean parents are always part of school life.</p>
-      </div>
-    </div>
+<section class="section">
+ <div class="wrap">
+  <div class="heading"><p class="eyebrow">Academics</p><h2>Learning that grows with your child.</h2><p>Explore our learning journey from the early years through Grade 6.</p></div>
+  <div class="learning">
+   <a href="academics.html#panel-k"><small>01</small><h3>Kindergarten</h3><p>Play, language, early literacy, number sense and discovery.</p><b>Explore →</b></a>
+   <a class="featured" href="academics.html#panel-lower"><small>02</small><h3>Grades 1–2</h3><p>Structured foundations in reading, writing, mathematics, science and community learning.</p><b>Explore →</b></a>
+   <a href="academics.html#panel-upper"><small>03</small><h3>Grades 3–6</h3><p>More independence, research, projects, language and leadership opportunities.</p><b>Explore →</b></a>
   </div>
+  <p class="center"><a class="btn navy" href="academics.html">View Academics & Programs</a></p>
+ </div>
 </section>
 
-<!-- ABOUT / MISSION -->
-<section class="section-dim" id="about">
-  <div class="wrap two-col">
-    <div>
-      <div class="eyebrow">Our story</div>
-      <h2 class="heading-flag">About TALENTED KIDS ACADEMY
-        <svg viewBox="0 0 220 14" preserveAspectRatio="none"><path d="M2 8 Q30 2 60 8 T120 8 T180 8 T218 8"/></svg>
-      </h2>
-      <p>The story of the school began in 2006, when it was established as a humble ECDE centre with only seven students, marking the beginning of a remarkable journey of growth and transformation.Today we serve over 200 children from Playgroup through Grade 6, but we've kept the same idea at our core: school should feel warm, safe, and genuinely exciting to walk into.</p>
-      <ul class="value-list">
-        <li><span class="dot"></span><div><strong>Curiosity first.</strong> We'd rather a child ask a great question than memorise a fast answer.</div></li>
-        <li><span class="dot"></span><div><strong>Every child known.</strong> Small classes mean no one gets lost in the back row.</div></li>
-        <li><span class="dot"></span><div><strong>Kindness is a skill.</strong> We teach it as deliberately as we teach reading.</div></li>
-      </ul>
-    </div>
-    <div>
-      <div class="quote-block">
-        &ldquo;We don't just prepare children for the next grade. We try to send them on with a genuine love of learning &mdash; that's the part that lasts.&rdquo;
-        <cite>&mdash; Mr. Silvanus Isindu, Director</cite>
-      </div>
-    </div>
-  </div>
+<section class="life" id="life">
+ <div class="wrap">
+  <div class="lifehead"><div><p class="eyebrow light">School life</p><h2>Learning doesn't stop at the classroom door.</h2></div><p>Real school moments help prospective families see the community they are joining.</p></div>
+  <div class="photo"><div class="photo-placeholder life-photo-placeholder" role="img" aria-label="School life photo placeholder"><span>School Life Photo</span><small>Replace with a classroom, activity or trip photo</small></div><div><small>Real moments at TKA</small><h3>Curiosity, friendship and discovery.</h3><p>Trips and outdoor experiences give learners space to explore, observe and learn together.</p></div></div>
+  <div class="tags"><span>Outdoor learning</span><span>School trips</span><span>Art & creativity</span><span>Music</span><span>PE</span><span>ICT</span><span>Leadership</span></div>
+ </div>
 </section>
 
-<section class="section-dim" id="leadership-upload">
-  <div class="wrap">
-    <div class="eyebrow leadership-highlight"><span>Leadership profiles</span></div>
-    <h2 class="heading-flag">Meet the team guiding our school</h2>
-    <div class="upload-grid">
-      <figure class="leader-profile reveal" data-delay="1">
-        <img src="DIRECTOR.jpeg" alt="Mr. Silvanus Isindu, Director of TALENTED KIDS ACADEMY" loading="lazy">
-        <figcaption><span>Director</span><strong>Mr. Silvanus Isindu</strong></figcaption>
-      </figure>
-      <figure class="leader-profile reveal" data-delay="2">
-        <img src="GENERAL_MANAGER.jpeg" alt="General Manager of TALENTED KIDS ACADEMY" loading="lazy">
-        <figcaption><span>General Manager</span><strong>Mrs. Beatrice Isindu</strong></figcaption>
-      </figure>
-    </div>
-  </div>
+<section class="admit">
+ <div class="wrap admitin">
+  <div><p class="eyebrow">Admissions</p><h2>Your child's next chapter starts here.</h2><p>Start a conversation, visit the school, submit the required documents and confirm your child's place.</p></div>
+  <div class="steps"><div><b>01</b>Reach out</div><div><b>02</b>Visit a class</div><div><b>03</b>Submit documents</div><div><b>04</b>Confirm your spot</div></div>
+  <div class="actions"><a class="btn gold" href="admissions.html#application">Start application</a><a class="btn darkoutline" target="_blank" rel="noopener" href="https://wa.me/254768928241?text=Hello%20Talented%20Kids%20Academy%2C%20I%20would%20like%20to%20ask%20about%20admissions.">WhatsApp admissions</a></div>
+ </div>
 </section>
 
-<!-- CTA -->
-<section class="section-ink">
-  <div class="wrap center">
-    <div class="eyebrow" style="justify-content:center;">Ready to visit?</div>
-    <h2>Come see a school day for yourself.</h2>
-    <p class="muted" style="max-width:50ch; margin:0 auto 24px;">We welcome prospective families for a morning visit any week school is in session. Meet a teacher, see a classroom in action, and ask us anything.</p>
-    <a class="btn btn-light" href="admissions.html">Plan a Visit &amp; Enrol</a>
-  </div>
+<section class="section">
+ <div class="wrap contact"><div><p class="eyebrow">Come and see us</p><h2>The best way to understand our school is to visit.</h2><p>Talk with the admissions office, ask your questions and arrange a weekday school visit.</p></div>
+ <div class="details"><div><small>Phone</small><a href="tel:+254768928241">0768 928 241</a></div><div><small>Email</small><a href="mailto:talentedkidsacademy06@gmail.com">talentedkidsacademy06@gmail.com</a></div><div><small>Address</small><b>Langas Dukambili, Eldoret, Kenya</b></div><div><small>Hours</small><b>Monday–Friday · 7:30am–4:00pm</b></div></div></div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <div class="brand-name" style="color:#fff;">TALENTED KIDS ACADEMY<span style="color:var(--sunbeam);">Primary School</span></div>
-      <p class="muted" style="margin-top:10px; max-width:32ch;">30100 ELDORET KENYA, TALENTED KIDS ACADEMY, LANGAS DUKAMBILI &middot; Open weekdays, 7:30am&ndash;4:00pm</p>
-    </div>
-    <div>
-      <div class="contact-line"><div><strong>Phone</strong><a href="tel:+254768928241">0768&ndash;928&ndash;241</a></div></div>
-      <div class="contact-line"><div><strong>Email</strong><a href="mailto:talentedkidsacademy06@gmail.com">talentedkidsacademy06@gmail.com</a></div></div>
-    </div>
-    <div>
-      <a href="index.html">Home</a><br>
-      <a href="academics.html">Academics</a><br>
-      <a href="admissions.html">Admissions</a>
-    </div>
-  </div>
-  <div class="wrap" style="border-top:none; margin-top:20px; padding-top:0;">
-    &copy; TALENTED KIDS ACADEMY. All rights reserved.
-  </div>
-</footer>
+<section class="final"><div class="wrap"><p class="eyebrow light">TALENTED KIDS ACADEMY</p><h2>Give your child room to grow.</h2><p>Start the conversation with our admissions team today.</p><div class="actions"><a class="btn gold" href="admissions.html#application">Enrol Now →</a><a class="btn outline" href="tel:+254768928241">Call 0768 928 241</a></div></div></section>
+</main>
 
-<div class="mobile-contact-bar" aria-label="Quick contact actions">
-  <a href="tel:+254768928241"><span aria-hidden="true">&#9742;</span>Call</a>
-  <a href="https://wa.me/254768928241" target="_blank" rel="noopener"><span aria-hidden="true">&#9993;</span>WhatsApp</a>
-  <a href="admissions.html#application"><span aria-hidden="true">&#8599;</span>Enrol</a>
-</div>
-
-<script src="main.js"></script>
-</body>
-</html>
+<footer><div class="wrap foot"><div><a class="brand"><img src="TALENTED_KIDS_LOGO.png" alt=""><span><b>TALENTED KIDS ACADEMY</b><small>Primary School</small></span></a><p>30100 Eldoret, Kenya · Langas Dukambili</p></div><div><h4>Explore</h4><a href="about.html">About</a><a href="academics.html">Academics</a><a href="#life">School Life</a><a href="admissions.html">Admissions</a></div><div><h4>Contact</h4><a href="tel:+254768928241">0768 928 241</a><a href="mailto:talentedkidsacademy06@gmail.com">talentedkidsacademy06@gmail.com</a><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Langas%20Dukambili%2C%20Eldoret%2C%20Kenya">Open in Maps</a></div></div><div class="wrap copy">© 2026 Talented Kids Academy. All rights reserved.</div></footer>
+<div class="mobile"><a href="tel:+254768928241">☎<small>Call</small></a><a href="https://wa.me/254768928241" target="_blank">◌<small>WhatsApp</small></a><a href="admissions.html#application">↗<small>Enrol</small></a></div>
+<script src="home.js"></script>
+</body></html>
