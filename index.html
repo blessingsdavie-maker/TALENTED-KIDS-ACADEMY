@@ -48,17 +48,53 @@
       </div>
     </div>
     <div class="growth-line-wrap">
-      <!-- signature growth-line illustration -->
-      <svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a rising growth line with small leaf marks, representing student progress">
-        <rect x="0" y="0" width="420" height="320" rx="20" fill="#f4f1ea"/>
-        <path d="M40 260 C 100 260, 90 210, 140 200 C 190 190, 180 140, 230 120 C 270 104, 260 70, 320 50" stroke="#1c2b4a" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <circle cx="40" cy="260" r="7" fill="#e8604c"/>
-        <circle cx="140" cy="200" r="7" fill="#ffffff"/>
-        <circle cx="230" cy="120" r="7" fill="#ffffff"/>
-        <circle cx="320" cy="50" r="8" fill="#1c2b4a"/>
-        <path d="M320 50 q10 -14 24 -8 q-4 16 -20 18 q-8 0 -4 -10z" fill="#1c2b4a"/>
-        <text x="40" y="288" font-family="Inter, sans-serif" font-size="12" fill="#2f4066">PLAYGROUP</text>
-        <text x="255" y="46" font-family="Inter, sans-serif" font-size="12" fill="#2f4066">GRADE 6</text>
+      <svg class="flower-illustration" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated illustration of a flower growing from a seed in Kindergarten to a bloom in Grade 6">
+        <defs>
+          <linearGradient id="flower-sky" x1="210" y1="0" x2="210" y2="320" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#EAF5F1"/>
+            <stop offset="1" stop-color="#FDFCF9"/>
+          </linearGradient>
+          <linearGradient id="stem-green" x1="210" y1="262" x2="210" y2="75" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#185941"/>
+            <stop offset="1" stop-color="#53A776"/>
+          </linearGradient>
+          <filter id="flower-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="420" height="320" rx="20" fill="url(#flower-sky)"/>
+        <path d="M34 263C118 246 302 246 386 263" stroke="#C9DCCF" stroke-width="2" stroke-linecap="round"/>
+        <path d="M52 270C145 258 275 258 368 270" stroke="#E0EAE1" stroke-width="2" stroke-linecap="round"/>
+
+        <g class="flower-stage flower-stage-seed">
+          <ellipse cx="210" cy="258" rx="12" ry="7" fill="#8B5E3C"/>
+          <path d="M199 258C202 251 218 251 221 258" stroke="#5D402C" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <path class="flower-stem" d="M210 258C209 220 211 166 210 93" stroke="url(#stem-green)" stroke-width="7" stroke-linecap="round"/>
+        <path class="flower-leaf flower-leaf-left" d="M209 205C181 190 163 197 151 219C177 222 195 218 209 205Z" fill="#53A776"/>
+        <path class="flower-leaf flower-leaf-right" d="M210 158C238 143 257 150 270 171C242 175 224 169 210 158Z" fill="#27805E"/>
+        <path class="flower-leaf flower-leaf-top" d="M210 120C190 108 179 113 173 128C190 132 202 128 210 120Z" fill="#71B989"/>
+        <g class="flower-bloom" filter="url(#flower-glow)">
+          <circle cx="210" cy="72" r="12" fill="#F5C84C"/>
+          <path class="flower-petal petal-top" d="M210 64C194 49 199 32 210 24C221 32 226 49 210 64Z" fill="#E8604C"/>
+          <path class="flower-petal petal-right" d="M218 72C233 56 249 63 254 76C242 86 226 87 218 72Z" fill="#F2785F"/>
+          <path class="flower-petal petal-bottom" d="M210 80C226 95 221 111 210 119C199 111 194 95 210 80Z" fill="#E8604C"/>
+          <path class="flower-petal petal-left" d="M202 72C187 87 171 80 166 68C178 58 194 57 202 72Z" fill="#F2785F"/>
+          <circle cx="210" cy="72" r="7" fill="#F5C84C"/>
+        </g>
+
+        <g class="flower-timeline" font-family="Inter, sans-serif" text-anchor="middle">
+          <path d="M52 282H368" stroke="#B7CDBE" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="52" cy="282" r="5" fill="#E8604C"/>
+          <circle cx="157" cy="282" r="5" fill="#27805E"/>
+          <circle cx="262" cy="282" r="5" fill="#27805E"/>
+          <circle cx="368" cy="282" r="6" fill="#F5C84C"/>
+          <text x="52" y="302" font-size="10" fill="#2F4066">KINDERGARTEN</text>
+          <text x="157" y="302" font-size="10" fill="#2F4066">GRADE 2</text>
+          <text x="262" y="302" font-size="10" fill="#2F4066">GRADE 4</text>
+          <text x="368" y="302" font-size="10" fill="#2F4066">GRADE 6</text>
+        </g>
       </svg>
     </div>
   </div>

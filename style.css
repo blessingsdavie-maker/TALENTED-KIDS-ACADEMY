@@ -367,6 +367,32 @@ section{ padding: 88px 0; }
   transform: rotate(1.5deg);
 }
 .growth-line-wrap svg{ width:100%; height:auto; display:block; border-radius:10px; }
+.flower-illustration .flower-stem{
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: flowerStemGrow 2.4s ease-out .35s forwards;
+}
+.flower-illustration .flower-leaf,
+.flower-illustration .flower-bloom{
+  opacity:0;
+  transform-box:fill-box;
+  transform-origin:center;
+}
+.flower-illustration .flower-leaf-left{ animation: flowerLeafIn .6s ease-out 1.25s forwards; }
+.flower-illustration .flower-leaf-right{ animation: flowerLeafIn .6s ease-out 1.65s forwards; }
+.flower-illustration .flower-leaf-top{ animation: flowerLeafIn .6s ease-out 2.05s forwards; }
+.flower-illustration .flower-bloom{ animation: flowerBloomIn .8s cubic-bezier(.22,1,.36,1) 2.45s forwards; }
+.flower-illustration .flower-stage-seed{ animation: flowerSeedFade .7s ease-out 2.05s forwards; }
+.flower-illustration .flower-timeline circle{ animation: flowerDotPulse 2.8s ease-in-out infinite; }
+.flower-illustration .flower-timeline circle:nth-of-type(2){ animation-delay:.35s; }
+.flower-illustration .flower-timeline circle:nth-of-type(3){ animation-delay:.7s; }
+.flower-illustration .flower-timeline circle:nth-of-type(4){ animation-delay:1.05s; }
+
+@keyframes flowerStemGrow{ to{ stroke-dashoffset:0; } }
+@keyframes flowerLeafIn{ from{ opacity:0; transform:scale(0) rotate(-18deg); } to{ opacity:1; transform:scale(1) rotate(0); } }
+@keyframes flowerBloomIn{ from{ opacity:0; transform:scale(.15) rotate(-18deg); } to{ opacity:1; transform:scale(1) rotate(0); } }
+@keyframes flowerSeedFade{ to{ opacity:.45; transform:translateY(3px) scale(.9); } }
+@keyframes flowerDotPulse{ 0%,100%{ opacity:.62; } 50%{ opacity:1; } }
 
 /* facts strip */
 .facts{
@@ -1606,6 +1632,11 @@ body.menu-open {
 @media (prefers-reduced-motion: reduce){
   .nav-links,
   .nav::after{ transition:none; }
+  .flower-illustration .flower-stem{ stroke-dashoffset:0; }
+  .flower-illustration .flower-leaf,
+  .flower-illustration .flower-bloom{ opacity:1; transform:none; }
+  .flower-illustration .flower-stage-seed{ opacity:.45; transform:translateY(3px) scale(.9); }
+  .flower-illustration .flower-timeline circle{ animation:none; opacity:1; }
 }
 
 @media (max-width:600px){
