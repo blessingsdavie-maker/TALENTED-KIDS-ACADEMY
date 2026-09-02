@@ -369,12 +369,12 @@ section{ padding: 88px 0; }
 .growth-line-wrap svg{ width:100%; height:auto; display:block; border-radius:10px; }
 .flower-illustration .flower-stem{
   stroke-dasharray: 180;
-  stroke-dashoffset: 180;
+  stroke-dashoffset: 0;
   animation: flowerStemGrow 8s ease-in-out infinite;
 }
 .flower-illustration .flower-leaf,
 .flower-illustration .flower-bloom{
-  opacity:0;
+  opacity:1;
   transform-box:fill-box;
   transform-origin:center;
 }
@@ -387,19 +387,27 @@ section{ padding: 88px 0; }
 .flower-illustration .flower-timeline circle:nth-of-type(2){ animation-delay:.35s; }
 .flower-illustration .flower-timeline circle:nth-of-type(3){ animation-delay:.7s; }
 .flower-illustration .flower-timeline circle:nth-of-type(4){ animation-delay:1.05s; }
+.flower-illustration .flower-timeline path{ stroke-dasharray:186; stroke-dashoffset:186; animation: flowerTimelineGrow 8s ease-in-out infinite; }
 
 @keyframes flowerStemGrow{
-  0%, 12%{ stroke-dashoffset:180; }
-  40%, 84%{ stroke-dashoffset:0; }
+  0%, 22%{ stroke-dashoffset:0; }
+  32%, 84%{ stroke-dashoffset:0; }
   100%{ stroke-dashoffset:180; }
 }
+@keyframes flowerTimelineGrow{
+  0%, 22%{ stroke-dashoffset:0; }
+  40%, 84%{ stroke-dashoffset:0; }
+  100%{ stroke-dashoffset:186; }
+}
 @keyframes flowerLeafIn{
-  0%, 20%{ opacity:0; transform:scale(0) rotate(-18deg); }
+  0%, 20%{ opacity:1; transform:scale(1) rotate(0); }
+  30%{ opacity:0; transform:scale(0) rotate(-18deg); }
   42%, 84%{ opacity:1; transform:scale(1) rotate(0); }
   100%{ opacity:0; transform:scale(0) rotate(-18deg); }
 }
 @keyframes flowerBloomIn{
-  0%, 34%{ opacity:0; transform:scale(.15) rotate(-18deg); }
+  0%, 30%{ opacity:1; transform:scale(1) rotate(0); }
+  40%{ opacity:0; transform:scale(.15) rotate(-18deg); }
   55%, 84%{ opacity:1; transform:scale(1) rotate(0); }
   100%{ opacity:0; transform:scale(.15) rotate(-18deg); }
 }
@@ -1665,5 +1673,15 @@ body.menu-open {
     border-top:1px solid rgba(255,255,255,.2);
     backdrop-filter:blur(16px) saturate(125%);
     -webkit-backdrop-filter:blur(16px) saturate(125%);
+  }
+}
+
+@media (max-width:720px) and (prefers-reduced-motion: no-preference){
+  .flower-illustration .flower-stem,
+  .flower-illustration .flower-leaf,
+  .flower-illustration .flower-bloom,
+  .flower-illustration .flower-stage-seed,
+  .flower-illustration .flower-timeline path{
+    animation-duration:8s !important;
   }
 }
