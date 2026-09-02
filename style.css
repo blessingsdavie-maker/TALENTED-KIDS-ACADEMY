@@ -388,6 +388,11 @@ section{ padding: 88px 0; }
 .flower-illustration .flower-timeline circle:nth-of-type(3){ animation-delay:.7s; }
 .flower-illustration .flower-timeline circle:nth-of-type(4){ animation-delay:1.05s; }
 .flower-illustration .flower-timeline path{ stroke-dasharray:186; stroke-dashoffset:186; animation: flowerTimelineGrow 8s ease-in-out infinite; }
+.flower-illustration .flower-stem,
+.flower-illustration .flower-leaf,
+.flower-illustration .flower-bloom,
+.flower-illustration .flower-stage-seed,
+.flower-illustration .flower-timeline path{ animation-iteration-count:infinite; animation-play-state:running; }
 
 @keyframes flowerStemGrow{
   0%, 22%{ stroke-dashoffset:0; }
